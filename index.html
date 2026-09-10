@@ -29,6 +29,11 @@
                         },
                         mahogany: { DEFAULT: '#4A1513', dark: '#1E0A08', light: '#6B221F' },
                         gold: '#B8860B'
+                    },
+                    fontFamily: { 
+                        western: ['Rye', 'cursive'], 
+                        serif: ['Playfair Display', 'serif'], 
+                        sans: ['Outfit', 'sans-serif'] 
                     }
                 }
             }
@@ -36,6 +41,9 @@
     </script>
     
     <style>
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
         body {
             background-color: #23120B;
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30.5V27H0v-3h30v-3.5L33.75 24 37.5 20.25V0h3v20.25L44.25 24 48 27.75V30h12v3H48v3.5L44.25 40.5 40.5 44.25V60h-3V44.25L33.75 40.5 30 36.75V33H0v-3h30z' fill='%23b8860b' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
@@ -75,23 +83,23 @@
             pointer-events: none;
             box-shadow: inset 0 0 10px rgba(184, 134, 11, 0.12);
         }
-        .font-western { font-family: 'Rye', cursive; }
-        .font-serif { font-family: 'Playfair Display', serif; }
-        .font-sans { font-family: 'Outfit', sans-serif; }
     </style>
 </head>
 <body class="font-sans text-brown-deep dark:text-brown-light antialiased pb-24 selection:bg-gold selection:text-mahogany-dark">
 
     <header class="bg-brown-deep dark:bg-mahogany-dark text-cream shadow-xl sticky top-0 z-40 border-b-4 border-gold">
-        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
-            <h1 class="font-western text-lg tracking-wider text-amber-200 flex items-center gap-2">
-                <span class="brass-rivet"></span> Group 6 <span class="hidden sm:inline">Presentation</span> <span class="brass-rivet"></span>
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center gap-4">
+            <h1 class="font-western text-lg tracking-wider text-amber-200 flex items-center gap-2 shrink-0">
+                <span class="brass-rivet"></span> Group 6 <span class="brass-rivet"></span>
             </h1>
-            <nav class="flex items-center space-x-4 font-serif text-xs sm:text-sm font-semibold text-amber-100">
+            <nav class="flex items-center gap-4 font-serif text-xs sm:text-sm font-semibold text-amber-100 overflow-x-auto whitespace-nowrap hide-scrollbar pb-1 sm:pb-0 w-full justify-end">
                 <a href="#orientation" class="hover:text-gold transition-colors">Orientation</a>
                 <a href="#events" class="hover:text-gold transition-colors">Events</a>
-                <a href="#conclusion" class="hover:text-gold transition-colors">Re-Orientation</a>
+                <a href="#discography" class="hover:text-gold transition-colors">Discography</a>
+                <a href="#key-tracks" class="hover:text-gold transition-colors">Key Tracks</a>
+                <a href="#achievements" class="hover:text-gold transition-colors">Achievements</a>
                 <a href="#roster" class="hover:text-gold transition-colors">Our Team</a>
+                <button id="theme-toggle" class="p-1 px-2.5 rounded-lg bg-gold/20 border border-gold/50 text-amber-200 text-xs font-bold hover:bg-gold/40 transition-all shrink-0" title="Toggle Theme">Mode</button>
             </nav>
         </div>
     </header>
@@ -108,7 +116,7 @@
             </h2>
             <p class="font-serif text-lg text-amber-200 italic cowboy-ornament drop-shadow">The Voice of the Rocky Mountains</p>
             <div class="flex justify-center items-center gap-3 text-gold/60 text-xs">
-                <span>─── ✦ 📜 ✦ ───</span>
+                <span>🎸</span> <span>─── ✦ 📜 ✦ ───</span> <span>🌲</span>
             </div>
         </div>
 
@@ -121,10 +129,10 @@
 
                 <div class="w-full md:w-1/3 shrink-0 text-center relative group">
                     <div class="p-1 bg-gradient-to-b from-amber-600 via-gold to-brown-dark rounded-xl shadow-lg">
-                        <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-193098-84884159.jpg" alt="John Denver" class="w-full h-auto rounded-lg border-2 border-brown-deep object-cover aspect-square">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3oxeFF1G6eSanUVbjoaN27I-qWXLC63yhz50o1NtOrPWthbZJlz5vIGeh&s=10" alt="John Denver" class="w-full h-auto rounded-lg border-2 border-brown-deep object-cover aspect-square">
                     </div>
                     <p class="text-xs mt-2 font-serif italic text-brown-dark dark:text-brown-light flex items-center justify-center gap-1">
-                        <span>🎶</span> John Denver performing live
+                        <span>🎶</span> John Denver performing live with his acoustic guitar
                     </p>
                 </div>
                 <div class="w-full md:w-2/3 space-y-3 text-brown-deep dark:text-brown-light">
@@ -133,389 +141,498 @@
                         <span class="text-xs font-sans text-gold border border-gold/30 px-2 py-0.5 rounded-full">BIOGRAPHY</span>
                     </h3>
                     <p class="text-xs sm:text-sm leading-relaxed">
-                        <b class="text-brown-dark dark:text-brown-light">Henry John Deutschendorf Jr.</b>, globally recognized by his artistic name <b class="text-brown-dark dark:text-brown-light">John Denver</b>, was an extraordinary American singer-songwriter, acoustic guitarist, record producer, actor, humanitarian, and dedicated environmental activist. Born on <b class="text-brown-dark dark:text-brown-light">December 31, 1943</b>, in Roswell, New Mexico, his father, Lt. Col. Henry John Deutschendorf Sr., was a decorated U.S. Air Force pilot.
+                        <b class="text-brown-dark dark:text-brown-light">Henry John Deutschendorf Jr.</b>, known professionally as <b class="text-brown-dark dark:text-brown-light">John Denver</b>, was an iconic American singer-songwriter, acoustic guitarist, actor, record producer, and dedicated environmental activist. Born on <b class="text-brown-dark dark:text-brown-light">December 31, 1943</b>, in Roswell, New Mexico, he was the son of Captain Henry John Deutschendorf Sr., a highly decorated U.S. Air Force pilot who set several world speed records in the B-58 Hustler bomber.
                     </p>
                     <p class="text-xs sm:text-sm leading-relaxed">
-                        Because of his father’s military career, Denver's family relocated frequently throughout his childhood. This constant mobility made it difficult to establish lasting friendships, often instilling in young Denver a deep sense of loneliness and isolation. To cope with these challenges, he turned to nature and music, finding peace in open landscapes and learning to express his feelings through song.
+                        Because his father served in the military, John's family moved constantly across various U.S. Air Force bases—including locations in Arizona, Alabama, Texas, and Japan. Constantly being the "new kid in school" made it difficult for him to form long-term friendships, leading him to feel introverted and isolated during his formative years. To cope with this frequent upheaval, he found deep emotional solace in nature and music. A pivotal moment occurred when he was 11 years old and his grandmother gifted him a vintage 1910 Gibson acoustic guitar, which sparked his lifelong devotion to folk music and songwriting.
                     </p>
                     <p class="text-xs sm:text-sm leading-relaxed">
-                        His life changed profoundly at the age of 11 when his maternal grandmother gifted him a 1910 Gibson acoustic guitar. He taught himself to play and developed a passion for folk music. While studying architecture at Texas Tech University, he actively performed in local venues before deciding to drop out in 1963 to move to Los Angeles and pursue a full-time music career.
-                    </p>
-                    <p class="text-xs sm:text-sm leading-relaxed">
-                        He chose the surname <b class="text-brown-dark dark:text-brown-light">"Denver"</b> after the capital of Colorado, honoring his profound admiration for the Rocky Mountains, which served as his greatest lifelong muse and spiritual home.
+                        Although he initially enrolled at Texas Tech University to study architecture and engineering, the vibrant mid-1960s folk revival scene drew him away from academia. He dropped out in 1965 and moved to Los Angeles, California, to pursue a professional career in music. It was during this transition that music producer Randy Sparks suggested he change his surname from the lengthy "Deutschendorf" to <b class="text-brown-dark dark:text-brown-light">"Denver"</b>—honoring the capital of Colorado, a state whose majestic Rocky Mountains had captured his heart and would forever define his musical identity, spiritual worldview, and artistic signature.
                     </p>
                     <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold pt-1 text-brown-dark dark:text-brown-light">
                         <span class="bg-amber-900/20 text-amber-900 dark:text-amber-200 px-2.5 py-1 rounded-full border border-gold/40">Dec 31, 1943 – Oct 12, 1997</span>
-                        <span class="bg-amber-900/20 text-amber-900 dark:text-amber-200 px-2.5 py-1 rounded-full border border-gold/40">Birthplace: Roswell, NM</span>
-                        <span class="bg-amber-900/20 text-amber-900 dark:text-amber-200 px-2.5 py-1 rounded-full border border-gold/40">Folk, Country, Pop</span>
+                        <span class="bg-amber-900/20 text-amber-900 dark:text-amber-200 px-2.5 py-1 rounded-full border border-gold/40">Roswell, New Mexico</span>
+                        <span class="bg-amber-900/20 text-amber-900 dark:text-amber-200 px-2.5 py-1 rounded-full border border-gold/40">Folk, Acoustic, Country</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="events" class="space-y-6">
-            <h3 class="font-western text-3xl text-center text-amber-100 cowboy-ornament drop-shadow-md">B. Events: The Journey</h3>
+            <div class="text-center">
+                <h3 class="font-western text-3xl text-amber-100 cowboy-ornament drop-shadow-md">B. Events: Life Key Highlights</h3>
+                <p class="font-serif text-xs text-amber-200/80 italic">A comprehensive look at John Denver's major life milestones</p>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div class="bg-cream dark:bg-brown-deep p-5 rounded-xl border-l-8 border-gold shadow-lg space-y-2 text-brown-deep dark:text-brown-light relative wood-card-glow">
-                    <div class="absolute top-2 right-2 brass-rivet"></div>
-                    <h4 class="font-serif text-lg font-bold text-brown-dark dark:text-brown-light flex items-center gap-2">
-                        <span>🎸</span> Early Life & Rise (1954–1970)
-                    </h4>
-                    <p class="text-xs sm:text-sm leading-relaxed">
-                        Denver spent his teenage years honing his vocal and guitar technique. After moving to Los Angeles in 1965, he auditioned against 250 musicians and was chosen to replace Chad Mitchell in the acclaimed folk group <b class="text-brown-dark dark:text-brown-light">The Mitchell Trio</b>. This opportunity allowed him to tour extensively.
-                    </p>
-                    <p class="text-xs sm:text-sm leading-relaxed">
-                        During a flight to visit family in 1966, he wrote the legendary ballad <b class="text-brown-dark dark:text-brown-light">"Leaving on a Jet Plane"</b>. When popular folk group Peter, Paul and Mary recorded the song in 1969, it reached #1 on the Billboard Hot 100 chart. This breakthrough led Denver to sign a solo recording contract with RCA Records.
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-cream dark:bg-brown-deep p-5 rounded-xl border-l-4 border-gold shadow-md space-y-3 text-brown-deep dark:text-brown-light wood-card-glow h-full">
+                    <div class="flex items-center gap-2 font-serif font-bold text-base text-brown-dark dark:text-brown-light border-b border-gold/30 pb-2">
+                        <span class="text-xl">🎸</span> Early Career & Breakthrough (1965–1969)
+                    </div>
+                    <p class="text-sm leading-relaxed text-justify">
+                        Moving to Los Angeles in 1965, Denver honed his musical craftsmanship by auditioning for and joining the legendary folk group the <i>Chad Mitchell Trio</i> as lead singer. He spent years touring coffeehouses and folk clubs, writing original compositions on the road. His ultimate career breakthrough arrived when folk trio Peter, Paul and Mary recorded his heartfelt original composition, <b class="text-brown-dark dark:text-brown-light">"Leaving on a Jet Plane."</b> Released in late 1969, the single soared to #1 on the Billboard Hot 100, establishing Denver as an elite songwriter and earning him his first major solo recording contract with RCA Records.
                     </p>
                 </div>
+
+                <div class="bg-cream dark:bg-brown-deep p-5 rounded-xl border-l-4 border-amber-600 shadow-md space-y-3 text-brown-deep dark:text-brown-light wood-card-glow h-full">
+                    <div class="flex items-center gap-2 font-serif font-bold text-base text-brown-dark dark:text-brown-light border-b border-amber-600/30 pb-2">
+                        <span class="text-xl">🌟</span> The Global Superstardom Era (1970s)
+                    </div>
+                    <p class="text-sm leading-relaxed text-justify">
+                        The 1970s marked John Denver's golden era of global superstardom. Fusing gentle folk melodies with accessible pop hooks, he dominated both country and pop charts simultaneously. He released a string of immortal acoustic anthems including <i>"Take Me Home, Country Roads"</i> (1971), <i>"Rocky Mountain High"</i> (1972), <i>"Sunshine on My Shoulders"</i> (1973), and <i>"Annie's Song"</i> (1974). During this peak period, he achieved four consecutive Multi-Platinum albums, hosted highly rated television specials, and was named the Country Music Association's Entertainer of the Year in 1975.
+                    </p>
+                </div>
+
+                <div class="bg-cream dark:bg-brown-deep p-5 rounded-xl border-l-4 border-amber-700 shadow-md space-y-3 text-brown-deep dark:text-brown-light wood-card-glow h-full">
+                    <div class="flex items-center gap-2 font-serif font-bold text-base text-brown-dark dark:text-brown-light border-b border-amber-700/30 pb-2">
+                        <span class="text-xl">🌱</span> Activism & Philanthropy
+                    </div>
+                    <p class="text-sm leading-relaxed text-justify">
+                        Recognizing his platform's immense reach, Denver channeled his influence into tireless ecological and humanitarian activism long before it was mainstream. In the late 1970s, he co-founded the <b>Windstar Foundation</b>, an educational and environmental research organization promoting sustainable living. He also established <i>Plant-It 2020</i> to combat global deforestation. Internationally, Denver worked closely with UNICEF and the Presidential Commission on World Hunger, visiting developing nations and testifying before the U.S. Congress to campaign against poverty and famine.
+                    </p>
+                </div>
+
+                <div class="bg-cream dark:bg-brown-deep p-5 rounded-xl border-l-4 border-amber-800 shadow-md space-y-3 text-brown-deep dark:text-brown-light wood-card-glow h-full">
+                    <div class="flex items-center gap-2 font-serif font-bold text-base text-brown-dark dark:text-brown-light border-b border-amber-800/30 pb-2">
+                        <span class="text-xl">✈️</span> Aviation & Passion for Space
+                    </div>
+                    <p class="text-sm leading-relaxed text-justify">
+                        Following in his father's footsteps, Denver developed a profound, lifelong passion for aviation. A highly skilled and licensed pilot with over 2,700 flight hours, he owned several vintage and modern aircraft, often flying himself to concert venues across North America. His fascination with aerospace exploration extended deeply into NASA programs; he actively supported space initiatives, performed benefit concerts for aerospace education, and was awarded NASA's prestigious <b>Public Service Medal</b> in 1985. He even trained as a candidate for the civilian teacher-in-space program before crew selection criteria shifted.
+                    </p>
+                </div>
+
+                <div class="bg-cream dark:bg-brown-deep p-5 rounded-xl border-l-4 border-amber-900 shadow-md space-y-3 text-brown-deep dark:text-brown-light wood-card-glow md:col-span-2">
+                    <div class="flex items-center gap-2 font-serif font-bold text-base text-brown-dark dark:text-brown-light border-b border-amber-900/30 pb-2">
+                        <span class="text-xl">🕊️</span> Tragic Passing & Lasting Legacy (1997 - Present)
+                    </div>
+                    <p class="text-sm leading-relaxed text-justify">
+                        Tragedy struck on October 12, 1997, when Denver perished at age 53 after his experimental single-engine Long-EZ aircraft crashed into Monterey Bay, California. Despite his untimely death, his enduring legacy continues to flourish vibrantly worldwide. He was inducted posthumously into the Songwriters Hall of Fame in 1996, received a star on the Hollywood Walk of Fame in 2014, and saw his legendary songs enshrined as official state anthems for Colorado and West Virginia. His music remains a timeless testament to human empathy, environmental stewardship, and the peaceful beauty of the natural world.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="discography" class="bg-brown-deep dark:bg-mahogany-dark text-cream p-6 rounded-2xl vintage-shadow border-2 border-gold/40 space-y-6 relative">
+            <div class="text-center space-y-2">
+                <h4 class="font-western text-3xl text-amber-200 cowboy-ornament">Iconic Discography (1969 – 1997)</h4>
+                <p class="font-serif text-xs sm:text-sm text-amber-100/90 italic max-w-2xl mx-auto">
+                    Complete album journey spanning John Denver's legendary recording career, from his 1969 debut to his final Grammy-winning album in 1997, with playable audio tracks.
+                </p>
+            </div>
+
+            <!-- Concept Overview Card -->
+            <div class="bg-cream dark:bg-brown-deep/90 border border-gold/40 rounded-xl p-4 sm:p-5 text-xs sm:text-sm leading-relaxed space-y-2 text-brown-deep dark:text-brown-light relative">
+                <div class="absolute top-2 left-2 brass-rivet"></div>
+                <div class="absolute top-2 right-2 brass-rivet"></div>
+                <h5 class="font-serif font-bold text-base text-brown-dark dark:text-brown-light flex items-center gap-2">
+                    <span>📀</span> Musical Career & Album Evolution
+                </h5>
+                <p>
+                    Over 30 studio and live albums selling over 33 million records globally, earning <b>8 Multi-Platinum, 13 Platinum, and 20 RIAA Gold certifications</b>.
+                </p>
+            </div>
+
+            <!-- Album Cards Grid / List -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="album-cards-container">
                 
-                <div class="bg-cream dark:bg-brown-deep p-5 rounded-xl border-l-8 border-amber-700 shadow-lg space-y-2 text-brown-deep dark:text-brown-light relative wood-card-glow">
-                    <div class="absolute top-2 right-2 brass-rivet"></div>
-                    <h4 class="font-serif text-lg font-bold text-brown-dark dark:text-brown-light flex items-center gap-2">
-                        <span>🌟</span> Peak Superstardom (1971–1980s)
-                    </h4>
-                    <p class="text-xs sm:text-sm leading-relaxed">
-                        The 1970s marked the era of Denver’s peak commercial dominance. Hits like <i>"Take Me Home, Country Roads"</i>, <i>"Rocky Mountain High"</i>, and <i>"Annie's Song"</i> topped charts globally. He was named the Country Music Association (CMA) Entertainer of the Year in 1975.
-                    </p>
-                    <p class="text-xs sm:text-sm leading-relaxed">
-                        Beyond music, Denver became a major television personality, hosting multiple Emmy-winning specials. In the 1980s, Denver served as a cultural ambassador, performing historic concert tours in the Soviet Union and China to foster international goodwill.
-                    </p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-cream dark:bg-brown-deep p-4 rounded-xl border border-gold/40 shadow-md space-y-2 text-brown-deep dark:text-brown-light relative">
-                    <div class="absolute top-2 right-2 brass-rivet"></div>
-                    <h5 class="font-serif font-bold text-sm text-brown-dark dark:text-brown-light">🌱 Environmental Activism</h5>
-                    <p class="text-xs leading-relaxed">
-                        Denver dedicated decades to protecting wildlife and wilderness. In 1976, he co-founded the <b class="text-brown-dark dark:text-brown-light">Windstar Foundation</b> in Aspen to promote sustainable living. He also established <i>Plant-It 2000</i> to plant millions of native trees globally.
-                    </p>
-                </div>
-                <div class="bg-cream dark:bg-brown-deep p-4 rounded-xl border border-gold/40 shadow-md space-y-2 text-brown-deep dark:text-brown-light relative">
-                    <div class="absolute top-2 right-2 brass-rivet"></div>
-                    <h5 class="font-serif font-bold text-sm text-brown-dark dark:text-brown-light">✈️ Passion for Aviation</h5>
-                    <p class="text-xs leading-relaxed">
-                        Following his father's footsteps, Denver was an avid aviator logging over 2,700 flight hours. He was a passionate supporter of space exploration, received the NASA Public Service Medal, and passed NASA's physical exams hoping to fly in space.
-                    </p>
-                </div>
-                <div class="bg-cream dark:bg-brown-deep p-4 rounded-xl border border-gold/40 shadow-md space-y-2 text-brown-deep dark:text-brown-light relative">
-                    <div class="absolute top-2 right-2 brass-rivet"></div>
-                    <h5 class="font-serif font-bold text-sm text-brown-dark dark:text-brown-light">🕊️ Tragic Passing (1997)</h5>
-                    <p class="text-xs leading-relaxed">
-                        On October 12, 1997, at age 53, Denver tragically passed away when his experimental aircraft crashed into Monterey Bay near Pacific Grove, California, following a fuel issue. His ashes were scattered across the Rocky Mountains.
-                    </p>
-                </div>
-            </div>
-
-            <div id="albums" class="bg-brown-deep dark:bg-mahogany-dark text-cream p-6 rounded-2xl vintage-shadow border-2 border-gold/40 space-y-6 relative">
-                <div class="text-center space-y-2">
-                    <h4 class="font-western text-3xl text-amber-200 cowboy-ornament">Iconic Discography</h4>
-                    <p class="font-serif text-xs sm:text-sm text-amber-100/90 italic max-w-2xl mx-auto">
-                        An overview of John Denver's legendary recording career and the cultural impact of his most popular albums.
-                    </p>
-                </div>
-
-                <div class="space-y-4">
-                    
-                    <!-- Album 1 -->
-                    <div class="bg-cream text-brown-deep p-4 rounded-xl flex flex-col md:flex-row items-center gap-4 border border-brown/20 relative wood-card-glow">
-                        <div class="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md group">
-                            <img id="cover-rhymes" 
-                                 src="https://m.media-amazon.com/images/I/718yIeM+GKL._UF1000,1000_QL80_.jpg" 
-                                 alt="Rhymes & Reasons" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/8B5A2B/FFF?text=Rhymes+%26+Reasons';">
-                        </div>
-                        <div class="flex-1 text-center md:text-left space-y-1">
-                            <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                                <h5 class="font-serif font-bold text-base text-brown-dark">1. Rhymes & Reasons (1969)</h5>
-                                <span class="bg-gold/20 text-brown-dark text-[10px] font-bold px-2 py-0.5 rounded-full border border-gold/40">Debut Album</span>
-                            </div>
-                            <p class="text-xs leading-relaxed text-brown-deep">
-                                This seminal record laid the foundation for his crystal-clear tenor vocals. It featured the original recording of his signature masterpiece <b>"Leaving on a Jet Plane"</b>.
-                            </p>
-                        </div>
-                        <div class="shrink-0 flex md:flex-col gap-2">
-                            <button onclick="playAudio('leaving-jet-plane', 'John Denver Leaving on a Jet Plane')" class="bg-brown dark:bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-bold flex items-center gap-1 justify-center hover:bg-brown-dark transition-colors border border-gold/30">
+                <!-- 1969: Rhymes & Reasons -->
+                <div class="bg-cream text-brown-deep p-4 rounded-xl flex items-center gap-4 border border-brown/20 relative wood-card-glow">
+                    <div class="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md">
+                        <img id="cover-rhymes" src="https://m.media-amazon.com/images/I/718yIeM+GKL._UF1000,1000_QL80_.jpg" alt="Rhymes & Reasons" class="w-full h-full object-cover">
+                        <span class="absolute bottom-0 inset-x-0 bg-brown-deep/90 text-amber-200 text-[9px] font-western text-center py-0.5">1969</span>
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-1">
+                        <h5 class="font-serif font-bold text-sm text-brown-dark truncate">1. Rhymes & Reasons</h5>
+                        <p class="text-[11px] leading-tight text-brown-deep line-clamp-2">Debut solo album featuring the iconic original version of "Leaving on a Jet Plane".</p>
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="playAudio('leaving-jet-plane', 'John Denver Leaving on a Jet Plane')" class="bg-brown text-cream px-2.5 py-1 rounded text-[11px] font-bold hover:bg-brown-dark transition-colors">
                                 ▶ <span id="label-leaving-jet-plane">Play</span>
                             </button>
-                            <button onclick="openLyrics('leaving-jet-plane')" class="bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-semibold hover:bg-brown-deep transition-colors border border-gold/30">📜 Info & Excerpt</button>
+                            <button onclick="openLyrics('leaving-jet-plane')" class="bg-brown-dark text-cream px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-brown-deep">📜 Info</button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Album 2 -->
-                    <div class="bg-cream text-brown-deep p-4 rounded-xl flex flex-col md:flex-row items-center gap-4 border border-brown/20 relative wood-card-glow">
-                        <div class="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md group">
-                            <img id="cover-poems" 
-                                 src="https://m.media-amazon.com/images/I/71IqOn-27+L._UF1000,1000_QL80_.jpg" 
-                                 alt="Poems, Prayers & Promises" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/5C3A21/FFF?text=Poems+Prayers+%26+Promises';">
-                        </div>
-                        <div class="flex-1 text-center md:text-left space-y-1">
-                            <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                                <h5 class="font-serif font-bold text-base text-brown-dark">2. Poems, Prayers & Promises (1971)</h5>
-                                <span class="bg-gold/20 text-brown-dark text-[10px] font-bold px-2 py-0.5 rounded-full border border-gold/40">Breakthrough</span>
-                            </div>
-                            <p class="text-xs leading-relaxed text-brown-deep">
-                                Denver's major commercial breakthrough. It seamlessly blended introspective folk ballads with uplifting country rhythm, featuring the iconic anthem <b>"Take Me Home, Country Roads"</b>.
-                            </p>
-                        </div>
-                        <div class="shrink-0 flex md:flex-col gap-2">
-                            <button onclick="playAudio('country-roads', 'John Denver Take Me Home Country Roads')" class="bg-brown dark:bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-bold flex items-center gap-1 justify-center hover:bg-brown-dark transition-colors border border-gold/30">
+                <!-- 1971: Poems, Prayers & Promises -->
+                <div class="bg-cream text-brown-deep p-4 rounded-xl flex items-center gap-4 border border-brown/20 relative wood-card-glow">
+                    <div class="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md">
+                        <img id="cover-poems" src="https://m.media-amazon.com/images/I/71IqOn-27+L._UF1000,1000_QL80_.jpg" alt="Poems, Prayers & Promises" class="w-full h-full object-cover">
+                        <span class="absolute bottom-0 inset-x-0 bg-brown-deep/90 text-amber-200 text-[9px] font-western text-center py-0.5">1971</span>
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-1">
+                        <h5 class="font-serif font-bold text-sm text-brown-dark truncate">2. Poems, Prayers & Promises</h5>
+                        <p class="text-[11px] leading-tight text-brown-deep line-clamp-2">Breakthrough album featuring "Take Me Home, Country Roads" & "Sunshine on My Shoulders".</p>
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="playAudio('country-roads', 'John Denver Take Me Home Country Roads')" class="bg-brown text-cream px-2.5 py-1 rounded text-[11px] font-bold hover:bg-brown-dark transition-colors">
                                 ▶ <span id="label-country-roads">Play</span>
                             </button>
-                            <button onclick="openLyrics('country-roads')" class="bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-semibold hover:bg-brown-deep transition-colors border border-gold/30">📜 Info & Excerpt</button>
+                            <button onclick="openLyrics('country-roads')" class="bg-brown-dark text-cream px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-brown-deep">📜 Info</button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Album 3 -->
-                    <div class="bg-cream text-brown-deep p-4 rounded-xl flex flex-col md:flex-row items-center gap-4 border border-brown/20 relative wood-card-glow">
-                        <div class="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md group">
-                            <img id="cover-rocky" 
-                                 src="https://m.media-amazon.com/images/I/718y-d3P58L._UF1000,1000_QL80_.jpg" 
-                                 alt="Rocky Mountain High" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/2A1810/FFF?text=Rocky+Mountain+High';">
-                        </div>
-                        <div class="flex-1 text-center md:text-left space-y-1">
-                            <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                                <h5 class="font-serif font-bold text-lg text-brown-dark">3. Rocky Mountain High (1972)</h5>
-                                <span class="bg-gold/20 text-brown-dark text-[10px] font-bold px-2 py-0.5 rounded-full border border-gold/40">Nature Anthem</span>
-                            </div>
-                            <p class="text-xs leading-relaxed text-brown-deep">
-                                This landmark album established Denver as an environmental icon. The title track <b>"Rocky Mountain High"</b> was officially recognized as a state song of Colorado in 2007.
-                            </p>
-                        </div>
-                        <div class="shrink-0 flex md:flex-col gap-2">
-                            <button onclick="playAudio('rocky-mountain', 'John Denver Rocky Mountain High')" class="bg-brown dark:bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-bold flex items-center gap-1 justify-center hover:bg-brown-dark transition-colors border border-gold/30">
+                <!-- 1972: Rocky Mountain High -->
+                <div class="bg-cream text-brown-deep p-4 rounded-xl flex items-center gap-4 border border-brown/20 relative wood-card-glow">
+                    <div class="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md">
+                        <img id="cover-rocky" src="https://m.media-amazon.com/images/I/718y-d3P58L._UF1000,1000_QL80_.jpg" alt="Rocky Mountain High" class="w-full h-full object-cover">
+                        <span class="absolute bottom-0 inset-x-0 bg-brown-deep/90 text-amber-200 text-[9px] font-western text-center py-0.5">1972</span>
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-1">
+                        <h5 class="font-serif font-bold text-sm text-brown-dark truncate">3. Rocky Mountain High</h5>
+                        <p class="text-[11px] leading-tight text-brown-deep line-clamp-2">Landmark album celebrating Colorado nature. Title track became an official Colorado state song.</p>
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="playAudio('rocky-mountain', 'John Denver Rocky Mountain High')" class="bg-brown text-cream px-2.5 py-1 rounded text-[11px] font-bold hover:bg-brown-dark transition-colors">
                                 ▶ <span id="label-rocky-mountain">Play</span>
                             </button>
-                            <button onclick="openLyrics('rocky-mountain')" class="bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-semibold hover:bg-brown-deep transition-colors border border-gold/30">📜 Info & Excerpt</button>
+                            <button onclick="openLyrics('rocky-mountain')" class="bg-brown-dark text-cream px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-brown-deep">📜 Info</button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Album 4 -->
-                    <div class="bg-cream text-brown-deep p-4 rounded-xl flex flex-col md:flex-row items-center gap-4 border border-brown/20 relative wood-card-glow">
-                        <div class="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md group">
-                            <img id="cover-back-home" 
-                                 src="https://m.media-amazon.com/images/I/71C7N1oVpxL._UF1000,1000_QL80_.jpg" 
-                                 alt="Back Home Again" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/8B5A2B/FFF?text=Back+Home+Again';">
-                        </div>
-                        <div class="flex-1 text-center md:text-left space-y-1">
-                            <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                                <h5 class="font-serif font-bold text-base text-brown-dark">4. Back Home Again (1974)</h5>
-                                <span class="bg-gold/20 text-brown-dark text-[10px] font-bold px-2 py-0.5 rounded-full border border-gold/40">Multi-Platinum Hit</span>
-                            </div>
-                            <p class="text-xs leading-relaxed text-brown-deep">
-                                Reached #1 on the Billboard 200 chart. Includes the legendary love ballad <b>"Annie's Song"</b> and the heartwarming country track <b>"Back Home Again"</b>.
-                            </p>
-                        </div>
-                        <div class="shrink-0 flex md:flex-col gap-2">
-                            <button onclick="playAudio('annie-song', 'John Denver Annies Song')" class="bg-brown dark:bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-bold flex items-center gap-1 justify-center hover:bg-brown-dark transition-colors border border-gold/30">
-                                ▶ <span id="label-annie-song">Play</span>
+                <!-- 1974: Annie's Song (Replacing Back Home Again for clarity) -->
+                <div class="bg-cream text-brown-deep p-4 rounded-xl flex items-center gap-4 border border-brown/20 relative wood-card-glow">
+                    <div class="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md">
+                        <img id="cover-annies" src="https://m.media-amazon.com/images/I/81S2H6L4JTL._UF1000,1000_QL80_.jpg" alt="Annie's Song" class="w-full h-full object-cover">
+                        <span class="absolute bottom-0 inset-x-0 bg-brown-deep/90 text-amber-200 text-[9px] font-western text-center py-0.5">1974</span>
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-1">
+                        <h5 class="font-serif font-bold text-sm text-brown-dark truncate">4. Annie's Song</h5>
+                        <p class="text-[11px] leading-tight text-brown-deep line-clamp-2">One of his most legendary releases, this deeply romantic #1 hit was written on a ski lift for his wife.</p>
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="playAudio('annies-song', 'John Denver Annie Song')" class="bg-brown text-cream px-2.5 py-1 rounded text-[11px] font-bold hover:bg-brown-dark transition-colors">
+                                ▶ <span id="label-annies-song">Play</span>
                             </button>
-                            <button onclick="openLyrics('annie-song')" class="bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-semibold hover:bg-brown-deep transition-colors border border-gold/30">📜 Info & Excerpt</button>
+                            <button onclick="openLyrics('annies-song')" class="bg-brown-dark text-cream px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-brown-deep">📜 Info</button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Album 5 -->
-                    <div class="bg-cream text-brown-deep p-4 rounded-xl flex flex-col md:flex-row items-center gap-4 border border-brown/20 relative wood-card-glow">
-                        <div class="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md group">
-                            <img id="cover-windsong" 
-                                 src="https://m.media-amazon.com/images/I/71rQ66B408L._UF1000,1000_QL80_.jpg" 
-                                 alt="Windsong" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/5C3A21/FFF?text=Windsong';">
-                        </div>
-                        <div class="flex-1 text-center md:text-left space-y-1">
-                            <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                                <h5 class="font-serif font-bold text-base text-brown-dark">5. Windsong (1975)</h5>
-                                <span class="bg-gold/20 text-brown-dark text-[10px] font-bold px-2 py-0.5 rounded-full border border-gold/40">Chart-Topper</span>
-                            </div>
-                            <p class="text-xs leading-relaxed text-brown-deep">
-                                One of his most successful albums globally, featuring ocean-tribute masterpiece <b>"Calypso"</b> (written for Jacques Cousteau) and the tender ballad <b>"I'm Sorry"</b>.
-                            </p>
-                        </div>
-                        <div class="shrink-0 flex md:flex-col gap-2">
-                            <button onclick="playAudio('calypso', 'John Denver Calypso')" class="bg-brown dark:bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-bold flex items-center gap-1 justify-center hover:bg-brown-dark transition-colors border border-gold/30">
+                <!-- 1975: Windsong -->
+                <div class="bg-cream text-brown-deep p-4 rounded-xl flex items-center gap-4 border border-brown/20 relative wood-card-glow">
+                    <div class="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md">
+                        <img id="cover-windsong" src="https://m.media-amazon.com/images/I/71Yv8S8+IeL._UF1000,1000_QL80_.jpg" alt="Windsong" class="w-full h-full object-cover">
+                        <span class="absolute bottom-0 inset-x-0 bg-brown-deep/90 text-amber-200 text-[9px] font-western text-center py-0.5">1975</span>
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-1">
+                        <h5 class="font-serif font-bold text-sm text-brown-dark truncate">5. Windsong</h5>
+                        <p class="text-[11px] leading-tight text-brown-deep line-clamp-2">Features ocean conservation anthem "Calypso" and chart-topper "I'm Sorry".</p>
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="playAudio('calypso', 'John Denver Calypso')" class="bg-brown text-cream px-2.5 py-1 rounded text-[11px] font-bold hover:bg-brown-dark transition-colors">
                                 ▶ <span id="label-calypso">Play</span>
                             </button>
-                            <button onclick="openLyrics('calypso')" class="bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-semibold hover:bg-brown-deep transition-colors border border-gold/30">📜 Info & Excerpt</button>
+                            <button onclick="openLyrics('calypso')" class="bg-brown-dark text-cream px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-brown-deep">📜 Info</button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Album 6 -->
-                    <div class="bg-cream text-brown-deep p-4 rounded-xl flex flex-col md:flex-row items-center gap-4 border border-brown/20 relative wood-card-glow">
-                        <div class="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md group">
-                            <img id="cover-autograph" 
-                                 src="https://m.media-amazon.com/images/I/711qK-I4D3L._UF1000,1000_QL80_.jpg" 
-                                 alt="Autograph" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/2A1810/FFF?text=Autograph';">
+                <!-- 1977: I Want to Live -->
+                <div class="bg-cream text-brown-deep p-4 rounded-xl flex items-center gap-4 border border-brown/20 relative wood-card-glow">
+                    <div class="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md">
+                        <img id="cover-iwanttolive" src="https://placehold.co/300x300/5C3A21/FFF?text=I+Want+To+Live" alt="I Want to Live" class="w-full h-full object-cover">
+                        <span class="absolute bottom-0 inset-x-0 bg-brown-deep/90 text-amber-200 text-[9px] font-western text-center py-0.5">1977</span>
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-1">
+                        <h5 class="font-serif font-bold text-sm text-brown-dark truncate">6. I Want to Live</h5>
+                        <p class="text-[11px] leading-tight text-brown-deep line-clamp-2">Reflective album highlighting humanitarian themes, featuring "How Can I Leave You Again".</p>
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="playAudio('iwanttolive', 'John Denver How Can I Leave You Again')" class="bg-brown text-cream px-2.5 py-1 rounded text-[11px] font-bold hover:bg-brown-dark transition-colors">
+                                ▶ <span id="label-iwanttolive">Play</span>
+                            </button>
+                            <button onclick="openLyrics('iwanttolive')" class="bg-brown-dark text-cream px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-brown-deep">📜 Info</button>
                         </div>
-                        <div class="flex-1 text-center md:text-left space-y-1">
-                            <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                                <h5 class="font-serif font-bold text-base text-brown-dark">6. Autograph (1980)</h5>
-                                <span class="bg-gold/20 text-brown-dark text-[10px] font-bold px-2 py-0.5 rounded-full border border-gold/40">1980s Era</span>
-                            </div>
-                            <p class="text-xs leading-relaxed text-brown-deep">
-                                Marking his transition into the 1980s, this album highlighted Denver's mature acoustic songwriting and gratitude towards his fans through the title track <b>"Autograph"</b>.
-                            </p>
-                        </div>
-                        <div class="shrink-0 flex md:flex-col gap-2">
-                            <button onclick="playAudio('autograph', 'John Denver Autograph')" class="bg-brown dark:bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-bold flex items-center gap-1 justify-center hover:bg-brown-dark transition-colors border border-gold/30">
+                    </div>
+                </div>
+
+                <!-- 1980: Autograph -->
+                <div class="bg-cream text-brown-deep p-4 rounded-xl flex items-center gap-4 border border-brown/20 relative wood-card-glow">
+                    <div class="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md">
+                        <img id="cover-autograph" src="https://placehold.co/300x300/8B5A2B/FFF?text=Autograph" alt="Autograph" class="w-full h-full object-cover">
+                        <span class="absolute bottom-0 inset-x-0 bg-brown-deep/90 text-amber-200 text-[9px] font-western text-center py-0.5">1980</span>
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-1">
+                        <h5 class="font-serif font-bold text-sm text-brown-dark truncate">7. Autograph</h5>
+                        <p class="text-[11px] leading-tight text-brown-deep line-clamp-2">Marked Denver's entrance into the 1980s with acoustic warm ballads like "Autograph" & "Dancing With the Mountains".</p>
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="playAudio('autograph', 'John Denver Autograph')" class="bg-brown text-cream px-2.5 py-1 rounded text-[11px] font-bold hover:bg-brown-dark transition-colors">
                                 ▶ <span id="label-autograph">Play</span>
                             </button>
-                            <button onclick="openLyrics('autograph')" class="bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-semibold hover:bg-brown-deep transition-colors border border-gold/30">📜 Info & Excerpt</button>
+                            <button onclick="openLyrics('autograph')" class="bg-brown-dark text-cream px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-brown-deep">📜 Info</button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Album 7 -->
-                    <div class="bg-cream text-brown-deep p-4 rounded-xl flex flex-col md:flex-row items-center gap-4 border border-brown/20 relative wood-card-glow">
-                        <div class="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md group">
-                            <img id="cover-higher" 
-                                 src="https://m.media-amazon.com/images/I/71R1s5P+ZEL._UF1000,1000_QL80_.jpg" 
-                                 alt="Higher Ground" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/4A1513/FFF?text=Higher+Ground';">
-                        </div>
-                        <div class="flex-1 text-center md:text-left space-y-1">
-                            <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                                <h5 class="font-serif font-bold text-base text-brown-dark">7. Higher Ground (1988)</h5>
-                                <span class="bg-gold/20 text-brown-dark text-[10px] font-bold px-2 py-0.5 rounded-full border border-gold/40">Nature & Spirit</span>
-                            </div>
-                            <p class="text-xs leading-relaxed text-brown-deep">
-                                Focused heavily on environmental protection and spiritual peace, featuring inspiring cuts such as <b>"Higher Ground"</b> and <b>"For You"</b>.
-                            </p>
-                        </div>
-                        <div class="shrink-0 flex md:flex-col gap-2">
-                            <button onclick="playAudio('higher-ground', 'John Denver Higher Ground')" class="bg-brown dark:bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-bold flex items-center gap-1 justify-center hover:bg-brown-dark transition-colors border border-gold/30">
-                                ▶ <span id="label-higher-ground">Play</span>
+                <!-- 1982: Seasons of the Heart -->
+                <div class="bg-cream text-brown-deep p-4 rounded-xl flex items-center gap-4 border border-brown/20 relative wood-card-glow">
+                    <div class="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md">
+                        <img id="cover-seasons" src="https://placehold.co/300x300/2A1810/FFF?text=Seasons+of+Heart" alt="Seasons of the Heart" class="w-full h-full object-cover">
+                        <span class="absolute bottom-0 inset-x-0 bg-brown-deep/90 text-amber-200 text-[9px] font-western text-center py-0.5">1982</span>
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-1">
+                        <h5 class="font-serif font-bold text-sm text-brown-dark truncate">8. Seasons of the Heart</h5>
+                        <p class="text-[11px] leading-tight text-brown-deep line-clamp-2">A deeply personal album written during emotional transitions, featuring hit single "Shanghai Breezes".</p>
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="playAudio('shanghai-breezes', 'John Denver Shanghai Breezes')" class="bg-brown text-cream px-2.5 py-1 rounded text-[11px] font-bold hover:bg-brown-dark transition-colors">
+                                ▶ <span id="label-shanghai-breezes">Play</span>
                             </button>
-                            <button onclick="openLyrics('higher-ground')" class="bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-semibold hover:bg-brown-deep transition-colors border border-gold/30">📜 Info & Excerpt</button>
+                            <button onclick="openLyrics('shanghai-breezes')" class="bg-brown-dark text-cream px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-brown-deep">📜 Info</button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Album 8 -->
-                    <div class="bg-cream text-brown-deep p-4 rounded-xl flex flex-col md:flex-row items-center gap-4 border border-brown/20 relative wood-card-glow">
-                        <div class="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md group">
-                            <img id="cover-all-aboard" 
-                                 src="https://m.media-amazon.com/images/I/81IAn-1Q6WL._UF1000,1000_QL80_.jpg" 
-                                 alt="All Aboard!" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/8B5A2B/FFF?text=All+Aboard!';">
-                        </div>
-                        <div class="flex-1 text-center md:text-left space-y-1">
-                            <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                                <h5 class="font-serif font-bold text-base text-brown-dark">8. All Aboard! (1997)</h5>
-                                <span class="bg-gold/20 text-brown-dark text-[10px] font-bold px-2 py-0.5 rounded-full border border-gold/40">Final Studio Album • Grammy Winner</span>
-                            </div>
-                            <p class="text-xs leading-relaxed text-brown-deep">
-                                Denver's final studio album released in August 1997, featuring train-themed folk classics. It won the <b>Grammy Award for Best Musical Album for Children</b> in 1998 posthumously.
-                            </p>
-                        </div>
-                        <div class="shrink-0 flex md:flex-col gap-2">
-                            <button onclick="playAudio('all-aboard', 'John Denver Steel Rails')" class="bg-brown dark:bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-bold flex items-center gap-1 justify-center hover:bg-brown-dark transition-colors border border-gold/30">
-                                ▶ <span id="label-all-aboard">Play</span>
+                <!-- 1983: It's About Time -->
+                <div class="bg-cream text-brown-deep p-4 rounded-xl flex items-center gap-4 border border-brown/20 relative wood-card-glow">
+                    <div class="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md">
+                        <img id="cover-itsabouttime" src="https://placehold.co/300x300/5C3A21/FFF?text=Its+About+Time" alt="It's About Time" class="w-full h-full object-cover">
+                        <span class="absolute bottom-0 inset-x-0 bg-brown-deep/90 text-amber-200 text-[9px] font-western text-center py-0.5">1983</span>
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-1">
+                        <h5 class="font-serif font-bold text-sm text-brown-dark truncate">9. It's About Time</h5>
+                        <p class="text-[11px] leading-tight text-brown-deep line-clamp-2">Features classic country duet "Wild Montana Skies" with Emmylou Harris.</p>
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="playAudio('wild-montana', 'John Denver Wild Montana Skies')" class="bg-brown text-cream px-2.5 py-1 rounded text-[11px] font-bold hover:bg-brown-dark transition-colors">
+                                ▶ <span id="label-wild-montana">Play</span>
                             </button>
-                            <button onclick="openLyrics('all-aboard')" class="bg-brown-dark text-cream px-3 py-1.5 rounded text-xs font-semibold hover:bg-brown-deep transition-colors border border-gold/30">📜 Info & Excerpt</button>
+                            <button onclick="openLyrics('wild-montana')" class="bg-brown-dark text-cream px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-brown-deep">📜 Info</button>
                         </div>
+                    </div>
+                </div>
+
+                <!-- 1988: Higher Ground -->
+                <div class="bg-cream text-brown-deep p-4 rounded-xl flex items-center gap-4 border border-brown/20 relative wood-card-glow">
+                    <div class="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md">
+                        <img id="cover-higherground" src="https://placehold.co/300x300/8B5A2B/FFF?text=Higher+Ground" alt="Higher Ground" class="w-full h-full object-cover">
+                        <span class="absolute bottom-0 inset-x-0 bg-brown-deep/90 text-amber-200 text-[9px] font-western text-center py-0.5">1988</span>
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-1">
+                        <h5 class="font-serif font-bold text-sm text-brown-dark truncate">10. Higher Ground</h5>
+                        <p class="text-[11px] leading-tight text-brown-deep line-clamp-2">Focused on environmental preservation and peace, featuring uplifting tracks like "For You".</p>
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="playAudio('higherground', 'John Denver For You')" class="bg-brown text-cream px-2.5 py-1 rounded text-[11px] font-bold hover:bg-brown-dark transition-colors">
+                                ▶ <span id="label-higherground">Play</span>
+                            </button>
+                            <button onclick="openLyrics('higherground')" class="bg-brown-dark text-cream px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-brown-deep">📜 Info</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1991: Different Directions -->
+                <div class="bg-cream text-brown-deep p-4 rounded-xl flex items-center gap-4 border border-brown/20 relative wood-card-glow">
+                    <div class="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md">
+                        <img id="cover-differentdir" src="https://placehold.co/300x300/2A1810/FFF?text=Different+Directions" alt="Different Directions" class="w-full h-full object-cover">
+                        <span class="absolute bottom-0 inset-x-0 bg-brown-deep/90 text-amber-200 text-[9px] font-western text-center py-0.5">1991</span>
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-1">
+                        <h5 class="font-serif font-bold text-sm text-brown-dark truncate">11. Different Directions</h5>
+                        <p class="text-[11px] leading-tight text-brown-deep line-clamp-2">Eclectic album showcasing Denver's acoustic evolution in the 1990s, including "Postcard from Paris".</p>
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="playAudio('differentdir', 'John Denver Postcard From Paris')" class="bg-brown text-cream px-2.5 py-1 rounded text-[11px] font-bold hover:bg-brown-dark transition-colors">
+                                ▶ <span id="label-differentdir">Play</span>
+                            </button>
+                            <button onclick="openLyrics('differentdir')" class="bg-brown-dark text-cream px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-brown-deep">📜 Info</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1997: All Aboard! (Final Album) -->
+                <div class="bg-cream text-brown-deep p-4 rounded-xl flex items-center gap-4 border border-gold shadow-lg relative wood-card-glow">
+                    <div class="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-gold shadow-md">
+                        <img id="cover-allaboard" src="https://placehold.co/300x300/B8860B/FFF?text=All+Aboard" alt="All Aboard!" class="w-full h-full object-cover">
+                        <span class="absolute bottom-0 inset-x-0 bg-amber-950 text-amber-200 text-[9px] font-western text-center py-0.5">1997</span>
+                    </div>
+                    <div class="flex-1 min-w-0 space-y-1">
+                        <div class="flex items-center gap-1">
+                            <h5 class="font-serif font-bold text-sm text-brown-dark truncate">12. All Aboard!</h5>
+                            <span class="bg-gold/30 text-amber-900 text-[9px] font-bold px-1.5 py-0.2 rounded border border-gold">Grammy Winner</span>
+                        </div>
+                        <p class="text-[11px] leading-tight text-brown-deep line-clamp-2">Denver's final studio album before his death. Won the 1998 Grammy Award for Best Musical Album for Children.</p>
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="playAudio('allaboard', 'John Denver On the Atchison Topeka and the Santa Fe')" class="bg-brown text-cream px-2.5 py-1 rounded text-[11px] font-bold hover:bg-brown-dark transition-colors">
+                                ▶ <span id="label-allaboard">Play</span>
+                            </button>
+                            <button onclick="openLyrics('allaboard')" class="bg-brown-dark text-cream px-2.5 py-1 rounded text-[11px] font-semibold hover:bg-brown-deep">📜 Info</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="key-tracks" class="bg-brown-deep/90 dark:bg-mahogany-dark/90 p-2.5 rounded-2xl vintage-shadow wood-card-glow">
+            <div class="stitched-border bg-cream dark:bg-brown-deep p-6 rounded-xl space-y-5 relative">
+                <div class="absolute top-2 left-2 brass-rivet"></div>
+                <div class="absolute top-2 right-2 brass-rivet"></div>
+
+                <div class="text-center space-y-1">
+                    <h3 class="font-western text-2xl text-brown-dark dark:text-brown-light cowboy-ornament">
+                        Key Tracks & Hit Singles
+                    </h3>
+                    <p class="font-serif text-xs text-brown dark:text-brown-light italic">
+                        Essential songs that defined John Denver's legendary musical legacy
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                    
+                    <div class="bg-cream-dark/60 dark:bg-brown-dark/40 p-3 rounded-lg border border-gold/30 flex justify-between items-center">
+                        <div class="min-w-0 pr-2">
+                            <h6 class="font-serif font-bold text-xs text-brown-dark dark:text-brown-light truncate">Take Me Home, Country Roads</h6>
+                            <p class="text-[10px] text-brown dark:text-amber-200">1971 • Billboard #2</p>
+                        </div>
+                        <button onclick="playAudio('country-roads', 'John Denver Take Me Home Country Roads')" class="bg-brown text-cream text-[10px] font-bold px-2 py-1 rounded shrink-0">▶ Play</button>
+                    </div>
+
+                    <div class="bg-cream-dark/60 dark:bg-brown-dark/40 p-3 rounded-lg border border-gold/30 flex justify-between items-center">
+                        <div class="min-w-0 pr-2">
+                            <h6 class="font-serif font-bold text-xs text-brown-dark dark:text-brown-light truncate">Annie's Song</h6>
+                            <p class="text-[10px] text-brown dark:text-amber-200">1974 • Billboard #1 Hit</p>
+                        </div>
+                        <button onclick="playAudio('annies-song', 'John Denver Annie Song')" class="bg-brown text-cream text-[10px] font-bold px-2 py-1 rounded shrink-0">▶ Play</button>
+                    </div>
+
+                    <div class="bg-cream-dark/60 dark:bg-brown-dark/40 p-3 rounded-lg border border-gold/30 flex justify-between items-center">
+                        <div class="min-w-0 pr-2">
+                            <h6 class="font-serif font-bold text-xs text-brown-dark dark:text-brown-light truncate">Rocky Mountain High</h6>
+                            <p class="text-[10px] text-brown dark:text-amber-200">1972 • State Song of CO</p>
+                        </div>
+                        <button onclick="playAudio('rocky-mountain', 'John Denver Rocky Mountain High')" class="bg-brown text-cream text-[10px] font-bold px-2 py-1 rounded shrink-0">▶ Play</button>
+                    </div>
+
+                    <div class="bg-cream-dark/60 dark:bg-brown-dark/40 p-3 rounded-lg border border-gold/30 flex justify-between items-center">
+                        <div class="min-w-0 pr-2">
+                            <h6 class="font-serif font-bold text-xs text-brown-dark dark:text-brown-light truncate">Sunshine on My Shoulders</h6>
+                            <p class="text-[10px] text-brown dark:text-amber-200">1973 • Billboard #1 Hit</p>
+                        </div>
+                        <button onclick="playAudio('sunshine', 'John Denver Sunshine On My Shoulders')" class="bg-brown text-cream text-[10px] font-bold px-2 py-1 rounded shrink-0">▶ Play</button>
+                    </div>
+
+                    <div class="bg-cream-dark/60 dark:bg-brown-dark/40 p-3 rounded-lg border border-gold/30 flex justify-between items-center">
+                        <div class="min-w-0 pr-2">
+                            <h6 class="font-serif font-bold text-xs text-brown-dark dark:text-brown-light truncate">Leaving on a Jet Plane</h6>
+                            <p class="text-[10px] text-brown dark:text-amber-200">1969 • Worldwide Classic</p>
+                        </div>
+                        <button onclick="playAudio('leaving-jet-plane', 'John Denver Leaving on a Jet Plane')" class="bg-brown text-cream text-[10px] font-bold px-2 py-1 rounded shrink-0">▶ Play</button>
+                    </div>
+
+                    <div class="bg-cream-dark/60 dark:bg-brown-dark/40 p-3 rounded-lg border border-gold/30 flex justify-between items-center">
+                        <div class="min-w-0 pr-2">
+                            <h6 class="font-serif font-bold text-xs text-brown-dark dark:text-brown-light truncate">Calypso</h6>
+                            <p class="text-[10px] text-brown dark:text-amber-200">1975 • Ocean Anthem</p>
+                        </div>
+                        <button onclick="playAudio('calypso', 'John Denver Calypso')" class="bg-brown text-cream text-[10px] font-bold px-2 py-1 rounded shrink-0">▶ Play</button>
+                    </div>
+
+                    <div class="bg-cream-dark/60 dark:bg-brown-dark/40 p-3 rounded-lg border border-gold/30 flex justify-between items-center">
+                        <div class="min-w-0 pr-2">
+                            <h6 class="font-serif font-bold text-xs text-brown-dark dark:text-brown-light truncate">Thank God I'm a Country Boy</h6>
+                            <p class="text-[10px] text-brown dark:text-amber-200">1975 • Billboard #1 Hit</p>
+                        </div>
+                        <button onclick="playAudio('country-boy', 'John Denver Thank God Im a Country Boy')" class="bg-brown text-cream text-[10px] font-bold px-2 py-1 rounded shrink-0">▶ Play</button>
+                    </div>
+
+                    <div class="bg-cream-dark/60 dark:bg-brown-dark/40 p-3 rounded-lg border border-gold/30 flex justify-between items-center">
+                        <div class="min-w-0 pr-2">
+                            <h6 class="font-serif font-bold text-xs text-brown-dark dark:text-brown-light truncate">Perhaps Love</h6>
+                            <p class="text-[10px] text-brown dark:text-amber-200">1981 • Duet w/ Plácido Domingo</p>
+                        </div>
+                        <button onclick="playAudio('perhaps-love', 'John Denver Perhaps Love')" class="bg-brown text-cream text-[10px] font-bold px-2 py-1 rounded shrink-0">▶ Play</button>
+                    </div>
+
+                    <div class="bg-cream-dark/60 dark:bg-brown-dark/40 p-3 rounded-lg border border-gold/30 flex justify-between items-center">
+                        <div class="min-w-0 pr-2">
+                            <h6 class="font-serif font-bold text-xs text-brown-dark dark:text-brown-light truncate">Fly Away</h6>
+                            <p class="text-[10px] text-brown dark:text-amber-200">1975 • feat. Olivia Newton-John</p>
+                        </div>
+                        <button onclick="playAudio('fly-away', 'John Denver Fly Away')" class="bg-brown text-cream text-[10px] font-bold px-2 py-1 rounded shrink-0">▶ Play</button>
                     </div>
 
                 </div>
             </div>
         </section>
 
-        <!-- Key Achievements & Awards Section -->
         <section id="achievements" class="space-y-6">
-            <div class="bg-brown-deep dark:bg-mahogany-dark text-cream p-6 rounded-2xl vintage-shadow border-2 border-gold/40 space-y-6 relative">
-                <div class="text-center space-y-2">
-                    <h3 class="font-western text-3xl text-amber-200 cowboy-ornament drop-shadow-md">Key Achievements & Honors</h3>
-                    <p class="font-serif text-xs sm:text-sm text-amber-100/90 italic max-w-2xl mx-auto">
-                        A tribute to John Denver's legendary accolades, music industry milestones, and global humanitarian honors.
+            <div class="text-center">
+                <h3 class="font-western text-3xl text-amber-100 cowboy-ornament drop-shadow-md">
+                    Achievements & Honors
+                </h3>
+                <p class="font-serif text-xs text-amber-200/80 italic">
+                    Major awards, Hall of Fame inductions, and state recognitions awarded to John Denver
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                
+                <div class="bg-cream dark:bg-brown-deep p-4 rounded-xl border border-gold/40 shadow-lg space-y-2 text-brown-deep dark:text-brown-light wood-card-glow">
+                    <div class="flex items-center gap-2 font-serif font-bold text-sm text-brown-dark dark:text-brown-light">
+                        <span class="text-lg">🏆</span> Grammy Awards
+                    </div>
+                    <ul class="text-xs space-y-1 list-disc list-inside">
+                        <li><b>1998:</b> Best Musical Album for Children (<i>All Aboard!</i>)</li>
+                        <li><b>1998:</b> Grammy Hall of Fame ("Take Me Home, Country Roads")</li>
+                    </ul>
+                </div>
+
+                <div class="bg-cream dark:bg-brown-deep p-4 rounded-xl border border-gold/40 shadow-lg space-y-2 text-brown-deep dark:text-brown-light wood-card-glow">
+                    <div class="flex items-center gap-2 font-serif font-bold text-sm text-brown-dark dark:text-brown-light">
+                        <span class="text-lg">⭐</span> Country Music Honors
+                    </div>
+                    <ul class="text-xs space-y-1 list-disc list-inside">
+                        <li><b>1975 CMA:</b> Entertainer of the Year</li>
+                        <li><b>1975 CMA:</b> Song of the Year (<i>Back Home Again</i>)</li>
+                    </ul>
+                </div>
+
+                <div class="bg-cream dark:bg-brown-deep p-4 rounded-xl border border-gold/40 shadow-lg space-y-2 text-brown-deep dark:text-brown-light wood-card-glow">
+                    <div class="flex items-center gap-2 font-serif font-bold text-sm text-brown-dark dark:text-brown-light">
+                        <span class="text-lg">🌟</span> Hall of Fame & Walk of Fame
+                    </div>
+                    <ul class="text-xs space-y-1 list-disc list-inside">
+                        <li><b>1996:</b> Songwriters Hall of Fame Induction</li>
+                        <li><b>2014:</b> Hollywood Walk of Fame Star (Posthumous)</li>
+                    </ul>
+                </div>
+
+                <div class="bg-cream dark:bg-brown-deep p-4 rounded-xl border border-gold/40 shadow-lg space-y-2 text-brown-deep dark:text-brown-light wood-card-glow">
+                    <div class="flex items-center gap-2 font-serif font-bold text-sm text-brown-dark dark:text-brown-light">
+                        <span class="text-lg">🏛️</span> Official State Songs
+                    </div>
+                    <ul class="text-xs space-y-1 list-disc list-inside">
+                        <li><b>2007:</b> "Rocky Mountain High" named official State Song of Colorado</li>
+                        <li><b>2014:</b> "Take Me Home, Country Roads" named official State Song of West Virginia</li>
+                    </ul>
+                </div>
+
+                <div class="bg-cream dark:bg-brown-deep p-4 rounded-xl border border-gold/40 shadow-lg space-y-2 text-brown-deep dark:text-brown-light wood-card-glow">
+                    <div class="flex items-center gap-2 font-serif font-bold text-sm text-brown-dark dark:text-brown-light">
+                        <span class="text-lg">🚀</span> NASA Public Service Medal
+                    </div>
+                    <p class="text-xs leading-relaxed">
+                        <b>1985:</b> Highest civilian honor awarded by NASA for promoting space exploration and supporting civil space initiatives.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-brown-deep">
-                    
-                    <div class="bg-cream p-4 rounded-xl border border-brown/20 space-y-2 relative wood-card-glow flex flex-col justify-between">
-                        <div class="absolute top-2 right-2 brass-rivet"></div>
-                        <div>
-                            <span class="text-2xl">🏆</span>
-                            <h5 class="font-serif font-bold text-sm text-brown-dark mt-1">CMA Entertainer of the Year</h5>
-                            <p class="text-xs text-brown-deep mt-1 leading-relaxed">
-                                Awarded the Country Music Association’s highest honor in <b>1975</b>, cementing his status as a music icon.
-                            </p>
-                        </div>
-                        <span class="text-[10px] font-bold text-gold uppercase tracking-wider block pt-2 border-t border-brown/20">Music Award • 1975</span>
+                <div class="bg-cream dark:bg-brown-deep p-4 rounded-xl border border-gold/40 shadow-lg space-y-2 text-brown-deep dark:text-brown-light wood-card-glow">
+                    <div class="flex items-center gap-2 font-serif font-bold text-sm text-brown-dark dark:text-brown-light">
+                        <span class="text-lg">🌲</span> Environmental & Cultural Laureate
                     </div>
-
-                    <div class="bg-cream p-4 rounded-xl border border-brown/20 space-y-2 relative wood-card-glow flex flex-col justify-between">
-                        <div class="absolute top-2 right-2 brass-rivet"></div>
-                        <div>
-                            <span class="text-2xl">🚀</span>
-                            <h5 class="font-serif font-bold text-sm text-brown-dark mt-1">NASA Public Service Medal</h5>
-                            <p class="text-xs text-brown-deep mt-1 leading-relaxed">
-                                Honored in <b>1985</b> by NASA for raising public awareness and enthusiasm for space exploration and science.
-                            </p>
-                        </div>
-                        <span class="text-[10px] font-bold text-gold uppercase tracking-wider block pt-2 border-t border-brown/20">Humanitarian Award • 1985</span>
-                    </div>
-
-                    <div class="bg-cream p-4 rounded-xl border border-brown/20 space-y-2 relative wood-card-glow flex flex-col justify-between">
-                        <div class="absolute top-2 right-2 brass-rivet"></div>
-                        <div>
-                            <span class="text-2xl">✍️</span>
-                            <h5 class="font-serif font-bold text-sm text-brown-dark mt-1">Songwriters Hall of Fame</h5>
-                            <p class="text-xs text-brown-deep mt-1 leading-relaxed">
-                                Inducted in <b>1996</b> in recognition of his timeless songwriting legacy and hundreds of self-composed songs.
-                            </p>
-                        </div>
-                        <span class="text-[10px] font-bold text-gold uppercase tracking-wider block pt-2 border-t border-brown/20">Hall of Fame • 1996</span>
-                    </div>
-
-                    <div class="bg-cream p-4 rounded-xl border border-brown/20 space-y-2 relative wood-card-glow flex flex-col justify-between">
-                        <div class="absolute top-2 right-2 brass-rivet"></div>
-                        <div>
-                            <span class="text-2xl">🥇</span>
-                            <h5 class="font-serif font-bold text-sm text-brown-dark mt-1">Grammy Award Winner</h5>
-                            <p class="text-xs text-brown-deep mt-1 leading-relaxed">
-                                Won the Grammy Award in <b>1998</b> for Best Musical Album for Children (*All Aboard!*) and Hall of Fame honors.
-                            </p>
-                        </div>
-                        <span class="text-[10px] font-bold text-gold uppercase tracking-wider block pt-2 border-t border-brown/20">Grammy Honor • 1998</span>
-                    </div>
-
+                    <ul class="text-xs space-y-1 list-disc list-inside">
+                        <li><b>1974:</b> Poet Laureate of Colorado</li>
+                        <li><b>1985:</b> Presidential World Hunger Award</li>
+                        <li><b>1993:</b> Albert Schweitzer Music Award</li>
+                    </ul>
                 </div>
+
             </div>
+        </section>
 
-            <!-- Featured Photo of John Denver with Overlay Caption inside -->
-            <div class="bg-brown-deep/90 dark:bg-mahogany-dark/90 p-2.5 rounded-2xl vintage-shadow wood-card-glow">
-                <div class="stitched-border bg-cream dark:bg-brown-deep p-6 rounded-xl flex flex-col items-center justify-center relative text-center">
-                    <div class="absolute top-2 left-2 brass-rivet z-10"></div>
-                    <div class="absolute top-2 right-2 brass-rivet z-10"></div>
-                    <div class="absolute bottom-2 left-2 brass-rivet z-10"></div>
-                    <div class="absolute bottom-2 right-2 brass-rivet z-10"></div>
-
-                    <div class="max-w-2xl w-full p-2 bg-gradient-to-b from-amber-600 via-gold to-brown-dark rounded-xl shadow-xl relative overflow-hidden group">
-                        <img src="https://variety.com/wp-content/uploads/2014/10/john-denvers-photographic-works.jpg?w=1000&h=563&crop=1" 
-                             alt="John Denver Portrait 1975" 
-                             class="w-full h-auto rounded-lg border-2 border-brown-deep object-cover max-h-[460px] shadow-md group-hover:scale-[1.01] transition-transform duration-300" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/800x500/5C3A21/FFF?text=John+Denver+Portrait';">
-                        
-                        <!-- Overlay inside the photo frame -->
-                        <div class="">
-                            <h4 class="font-western text-base sm:text-lg text-amber-200">Henry John Deutschendorf Jr. (John Denver)</h4>
-                            <p class="text-[11px] sm:text-xs font-serif italic text-amber-100 flex items-center justify-center gap-1 sm:gap-2">
-                                "Music brings us together and reminds us of our shared humanity and connection to the Earth."
-                            </p>
-                        </div>
-                    </div>
-                </div>
+        <section class="relative w-full h-60 md:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-gold/60">
+            <img src="https://variety.com/wp-content/uploads/2014/10/john-denvers-photographic-works.jpg?w=1000&h=563&crop=1" alt="John Denver 1974" class="w-full h-full object-cover filter brightness-90">
+            <div class="absolute inset-0 bg-gradient-to-t from-brown-deep/95 via-brown-deep/60 to-transparent flex items-end p-6">
+                <blockquote class="text-amber-100 font-serif text-base sm:text-xl italic drop-shadow-md">
+                    "Music does bring people together. It allows us to experience the same emotions. No matter in what language regales us, we all share a common feeling."
+                    <span class="block text-xs font-sans font-bold not-italic text-amber-300 mt-1 flex items-center gap-2">
+                        <span class="brass-rivet"></span> — John Denver
+                    </span>
+                </blockquote>
             </div>
         </section>
 
@@ -528,13 +645,13 @@
 
                 <h3 class="font-western text-2xl border-b-2 border-gold/40 pb-1 inline-block text-brown-dark dark:text-brown-light cowboy-ornament">C. Re-Orientation & Legacy</h3>
                 <p class="text-xs sm:text-sm leading-relaxed max-w-3xl mx-auto">
-                    In conclusion, John Denver was far more than a celebrated commercial pop-folk star; he served as a true global ambassador for ecological conservation, world peace, and human empathy. His life story demonstrates how artistic passion and a deep love for the natural world can overcome early feelings of isolation and displacement.
+                    In conclusion, John Denver was far more than just a successful commercial pop-folk star; he served as a true global ambassador for ecological conservation, world peace, and human empathy. His unique life story demonstrates how artistic passion can overcome early isolation, turning personal reflection into timeless universal art that bridges cultural and political divides across the globe.
                 </p>
                 <p class="text-xs sm:text-sm leading-relaxed max-w-3xl mx-auto">
-                    Even decades after his tragic passing, Denver's influence remains deeply woven into the fabric of American culture and around the globe. His songs have been covered by countless artists across various genres, and "Take Me Home, Country Roads" has achieved immortal status, not only as the official state song of West Virginia but as a globally recognized folk anthem sung in stadiums and campfires alike.
+                    Even decades after his tragic passing, Denver's influence remains deeply woven into the fabric of American culture and international music. His signature acoustic melodies continue to be discovered by younger generations, frequently appearing in modern films, television shows, and viral social media trends. Beyond pure entertainment, his foundational work in environmental activism set an inspiring precedent for future artists to use their massive platforms for the greater planetary good.
                 </p>
                 <p class="text-xs sm:text-sm leading-relaxed max-w-3xl mx-auto font-medium text-brown-dark dark:text-brown-light">
-                    Ultimately, John Denver’s warm tenor voice, signature acoustic guitar melodies, and heartfelt dedication to protecting our planet leave an enduring legacy. He reminds listeners everywhere to cherish the simple beauties of life, advocate for environmental stewardship, and live harmoniously with nature and one another.
+                    Ultimately, John Denver’s warm tenor voice and heartfelt dedication to protecting our planet leave an enduring legacy. He continually reminded the world that music is a universal language, inspiring listeners everywhere to live more harmoniously with nature, and more compassionately with one another.
                 </p>
             </div>
         </section>
@@ -568,25 +685,20 @@
             </div>
             <div class="flex items-center space-x-3">
                 <button id="bar-play-toggle" class="bg-brown text-cream px-3 py-1 rounded font-bold hover:bg-brown-dark transition-colors">⏸ Pause</button>
-                <button id="bar-close" class="text-brown-dark dark:text-brown-light font-bold hover:text-red-500 transition-colors">✕</button>
+                <button id="bar-close" class="text-brown-dark dark:text-brown-light font-bold">✕</button>
             </div>
         </div>
     </div>
 
-    <!-- Lyrics Modal -->
+    <!-- Lyrics / Info Modal -->
     <div id="lyrics-modal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
         <div class="bg-cream dark:bg-brown-deep text-brown-deep dark:text-brown-light rounded-xl border-4 border-brown max-w-md w-full p-5 space-y-3 max-h-[80vh] overflow-y-auto shadow-2xl">
             <div class="flex justify-between items-start border-b border-brown/30 pb-2">
                 <h4 id="lyrics-title" class="font-western text-lg text-brown-dark dark:text-brown-light">Song Info & Excerpt</h4>
-                <button onclick="closeLyrics()" class="font-bold text-brown-dark dark:text-brown-light hover:text-red-500 transition-colors">✕</button>
+                <button onclick="closeLyrics()" class="font-bold text-brown-dark dark:text-brown-light">✕</button>
             </div>
             <div id="lyrics-body" class="font-serif text-xs leading-relaxed bg-cream-dark/60 dark:bg-brown-dark/40 p-3 rounded text-brown-deep dark:text-brown-light space-y-3"></div>
         </div>
-    </div>
-
-    <!-- Custom Toast Notification -->
-    <div id="toast-message" class="fixed top-4 right-4 bg-mahogany-dark text-cream px-4 py-3 rounded shadow-xl transform transition-transform duration-300 translate-x-[150%] z-50 border-l-4 border-gold text-sm font-semibold flex items-center gap-2">
-        <span>⚠️</span> <span id="toast-text">Notification</span>
     </div>
 
     <audio id="music-player"></audio>
@@ -608,51 +720,68 @@
         const songDetails = {
             'leaving-jet-plane': {
                 albumCover: "https://m.media-amazon.com/images/I/718yIeM+GKL._UF1000,1000_QL80_.jpg",
-                summary: "This iconic song captures the poignant sentiment of departing from a loved one for a long journey, expressing both vulnerability and emotional devotion.",
-                quote: "All my bags are packed, I'm ready to go\nI'm standin' here outside your door\nI hate to wake you up to say goodbye\nBut the dawn is breakin', it's early morn'",
+                summary: "This iconic song captures the poignant sentiment of departing from a loved one for a long journey.",
+                quote: "All my bags are packed, I'm ready to go\nI'm standin' here outside your door\nI hate to wake you up to say goodbye",
                 searchQuery: "John Denver Leaving on a Jet Plane lyrics"
             },
             'country-roads': {
                 albumCover: "https://m.media-amazon.com/images/I/71IqOn-27+L._UF1000,1000_QL80_.jpg",
-                summary: "An uplifting anthem celebrating home, nature, and belonging, honoring the scenic landscape and spirit of West Virginia.",
-                quote: "Almost Heaven, West Virginia\nBlue Ridge Mountains, Shenandoah River\nLife is old there, older than the trees\nYounger than the mountains, growin' like a breeze",
+                summary: "An uplifting anthem celebrating home, nature, and belonging in West Virginia.",
+                quote: "Almost Heaven, West Virginia\nBlue Ridge Mountains, Shenandoah River\nTake me home, country roads",
                 searchQuery: "John Denver Take Me Home Country Roads lyrics"
             },
             'rocky-mountain': {
                 albumCover: "https://m.media-amazon.com/images/I/718y-d3P58L._UF1000,1000_QL80_.jpg",
-                summary: "A majestic tribute to the majesty of Colorado's wilderness and Denver's spiritual transformation upon embracing nature.",
-                quote: "He was born in the summer of his 27th year\nComin' home to a place he'd never been before\nHe left yesterday behind him, you might say he was born again\nColorado rocky mountain high",
+                summary: "A majestic tribute to Colorado's wilderness and Denver's spiritual transformation.",
+                quote: "He was born in the summer of his 27th year\nComin' home to a place he'd never been before\nColorado rocky mountain high",
                 searchQuery: "John Denver Rocky Mountain High lyrics"
             },
-            'annie-song': {
-                albumCover: "https://m.media-amazon.com/images/I/71C7N1oVpxL._UF1000,1000_QL80_.jpg",
-                summary: "Written in just 10 minutes on a ski lift in Aspen, Colorado, expressing overwhelming love for his then-wife Annie Martell.",
-                quote: "You fill up my senses\nLike a night in a forest\nLike the mountains in springtime\nLike a walk in the rain",
-                searchQuery: "John Denver Annies Song lyrics"
+            'annies-song': {
+                albumCover: "https://m.media-amazon.com/images/I/81S2H6L4JTL._UF1000,1000_QL80_.jpg",
+                summary: "A deeply romantic love song composed on an Aspen ski lift for his wife Annie.",
+                quote: "You fill up my senses\nLike a night in a forest\nLike the mountains in springtime",
+                searchQuery: "John Denver Annie's Song lyrics"
             },
             'calypso': {
-                albumCover: "https://m.media-amazon.com/images/I/71rQ66B408L._UF1000,1000_QL80_.jpg",
-                summary: "A powerful tribute to Jacques Cousteau and his research vessel Calypso, honoring ocean conservation and exploration.",
-                quote: "To sail on a dream on a ocean or stream\nTo be free like the time, to be wild in the wind\nTo be heart of the heart of the sea",
+                albumCover: "https://m.media-amazon.com/images/I/71Yv8S8+IeL._UF1000,1000_QL80_.jpg",
+                summary: "A vibrant tribute to Jacques Cousteau celebrating ocean exploration.",
+                quote: "To sail on a dream on an ocean or highway\nAye Calypso, the places you've been to",
                 searchQuery: "John Denver Calypso lyrics"
             },
+            'iwanttolive': {
+                summary: "A powerful acoustic ballad advocating for peace, world hunger relief, and ecological harmony.",
+                quote: "I want to live, I want to grow\nI want to see, I want to know",
+                searchQuery: "John Denver How Can I Leave You Again lyrics"
+            },
             'autograph': {
-                albumCover: "https://m.media-amazon.com/images/I/711qK-I4D3L._UF1000,1000_QL80_.jpg",
-                summary: "A heartfelt song dedicated to his fans around the world, expressing deep gratitude for their support throughout his music career.",
-                quote: "Here's my autograph, I'll sign it with a smile\nI hope that it will make you happy for a little while\nIt's written with affection and a touch of memory",
+                summary: "A warm acoustic melody expressing deep gratitude to his listeners and supporters worldwide.",
+                quote: "Here is my autograph, here in a song\nFor you to remember me when I am gone",
                 searchQuery: "John Denver Autograph lyrics"
             },
-            'higher-ground': {
-                albumCover: "https://m.media-amazon.com/images/I/71R1s5P+ZEL._UF1000,1000_QL80_.jpg",
-                summary: "An inspirational anthem calling for environmental awareness and humanity's collective spiritual elevation.",
-                quote: "It's time to seek a higher ground\nIt's time to turn this world around\nTo find a place where love is found",
-                searchQuery: "John Denver Higher Ground lyrics"
+            'shanghai-breezes': {
+                summary: "A romantic love song celebrating distance-defying affection across oceans.",
+                quote: "Shanghai breezes, cool and soft\nWarm summer night, stars high aloft",
+                searchQuery: "John Denver Shanghai Breezes lyrics"
             },
-            'all-aboard': {
-                albumCover: "https://m.media-amazon.com/images/I/81IAn-1Q6WL._UF1000,1000_QL80_.jpg",
-                summary: "From his final 1997 studio album celebrating America's railroad heritage, which earned a Grammy Award posthumously.",
-                quote: "Steel rails, steel rails, taking me away\nOn a train bound for nowhere, carry me today\nClickety-clack on the iron track",
-                searchQuery: "John Denver Steel Rails lyrics"
+            'wild-montana': {
+                summary: "A country duet with Emmylou Harris honoring the rugged beauty of the American West.",
+                quote: "Wild Montana skies, where the eagles soar\nUnderneath the big sky country shore",
+                searchQuery: "John Denver Wild Montana Skies lyrics"
+            },
+            'higherground': {
+                summary: "An inspirational anthem advocating environmental care and spiritual elevation.",
+                quote: "Reaching for higher ground, standing tall and strong\nFinding where we all belong",
+                searchQuery: "John Denver For You lyrics"
+            },
+            'differentdir': {
+                summary: "Reflective 1990s composition exploring life's evolving journeys and acoustic storytelling.",
+                quote: "Postcard from Paris, sent across the sea\nBringing all your love back home to me",
+                searchQuery: "John Denver Postcard From Paris lyrics"
+            },
+            'allaboard': {
+                summary: "Grammy-winning album celebrating classic train songs and American folklore for all ages.",
+                quote: "On the Atchison, Topeka and the Santa Fe\nHear the whistle blow along the way",
+                searchQuery: "John Denver All Aboard album lyrics"
             }
         };
 
@@ -661,11 +790,15 @@
                 { id: 'cover-rhymes', key: 'leaving-jet-plane', term: 'John Denver Rhymes and Reasons' },
                 { id: 'cover-poems', key: 'country-roads', term: 'John Denver Poems Prayers Promises' },
                 { id: 'cover-rocky', key: 'rocky-mountain', term: 'John Denver Rocky Mountain High' },
-                { id: 'cover-back-home', key: 'annie-song', term: 'John Denver Back Home Again' },
+                { id: 'cover-annies', key: 'annies-song', term: 'John Denver Annies Song' },
                 { id: 'cover-windsong', key: 'calypso', term: 'John Denver Windsong' },
+                { id: 'cover-iwanttolive', key: 'iwanttolive', term: 'John Denver I Want to Live' },
                 { id: 'cover-autograph', key: 'autograph', term: 'John Denver Autograph' },
-                { id: 'cover-higher', key: 'higher-ground', term: 'John Denver Higher Ground' },
-                { id: 'cover-all-aboard', key: 'all-aboard', term: 'John Denver All Aboard' }
+                { id: 'cover-seasons', key: 'shanghai-breezes', term: 'John Denver Seasons of the Heart' },
+                { id: 'cover-itsabouttime', key: 'wild-montana', term: 'John Denver Its About Time' },
+                { id: 'cover-higherground', key: 'higherground', term: 'John Denver Higher Ground' },
+                { id: 'cover-differentdir', key: 'differentdir', term: 'John Denver Different Directions' },
+                { id: 'cover-allaboard', key: 'allaboard', term: 'John Denver All Aboard' }
             ];
 
             for (const item of albumQueries) {
@@ -679,16 +812,20 @@
                         if (songDetails[item.key]) songDetails[item.key].albumCover = hiresUrl;
                     }
                 } catch(e) {
-                    // Fallback handled by onerror attribute
+                    // Retain placeholder if offline
                 }
             }
         }
 
         document.addEventListener('DOMContentLoaded', fetchAlbumCovers);
 
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
         function renderRoster() {
             document.getElementById('cards-container').innerHTML = rosterMembers.map(m => `
-                <div class="bg-cream dark:bg-brown-deep p-3 rounded-lg border border-gold/40 text-center text-brown-deep dark:text-brown-light flex flex-col items-center justify-center shadow-md relative hover:scale-105 transition-transform duration-200">
+                <div class="bg-cream dark:bg-brown-deep p-3 rounded-lg border border-gold/40 text-center text-brown-deep dark:text-brown-light flex flex-col items-center justify-center shadow-md relative">
                     <div class="absolute top-1 left-1 brass-rivet"></div>
                     <div class="absolute top-1 right-1 brass-rivet"></div>
                     <h5 class="font-bold text-xs leading-tight text-brown-dark dark:text-brown-light">${m.name}</h5>
@@ -701,32 +838,20 @@
 
         let currentId = null;
         const player = document.getElementById('music-player');
-        let toastTimeout;
-
-        function showToast(message) {
-            const toast = document.getElementById('toast-message');
-            document.getElementById('toast-text').innerText = message;
-            toast.classList.remove('translate-x-[150%]');
-            
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                toast.classList.add('translate-x-[150%]');
-            }, 3000);
-        }
         
         async function playAudio(id, query) {
             const label = document.getElementById(`label-${id}`);
             
             if (currentId === id && !player.paused) {
                 player.pause(); 
-                label.innerText = 'Play'; 
+                if (label) label.innerText = 'Play'; 
                 currentId = null; 
                 document.getElementById('bar-play-toggle').innerText = '▶ Play';
                 return;
             }
             
             document.querySelectorAll('[id^="label-"]').forEach(el => el.innerText = 'Play');
-            label.innerText = 'Loading...';
+            if (label) label.innerText = 'Loading...';
             
             try {
                 const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=1`);
@@ -735,26 +860,25 @@
                 if (data.results?.[0]) {
                     player.src = data.results[0].previewUrl; 
                     player.play();
-                    label.innerText = 'Pause'; 
+                    if (label) label.innerText = 'Pause'; 
                     currentId = id;
                     document.getElementById('now-playing-title').innerText = data.results[0].trackName;
                     document.getElementById('player-bar').classList.remove('translate-y-full');
                     document.getElementById('bar-play-toggle').innerText = '⏸ Pause';
                     
                     player.onended = () => { 
-                        label.innerText = 'Play'; 
+                        if (label) label.innerText = 'Play'; 
                         currentId = null; 
                         document.getElementById('bar-play-toggle').innerText = '▶ Play';
-                        document.getElementById('player-bar').classList.add('translate-y-full');
                     };
                 } else {
-                    label.innerText = 'Play';
-                    showToast('Preview not found for this track.');
+                    if (label) label.innerText = 'Play';
+                    alert('Preview audio not found for this track.');
                 }
             } catch (err) { 
                 console.error("Audio fetch error:", err);
-                label.innerText = 'Play'; 
-                showToast('Failed to load audio preview. Check internet connection.');
+                if (label) label.innerText = 'Play'; 
+                alert('Failed to load audio preview. Check internet connection.');
             }
         }
 
@@ -763,44 +887,48 @@
             if (player.paused) { 
                 player.play(); 
                 document.getElementById('bar-play-toggle').innerText = '⏸ Pause'; 
-                if (currentId) document.getElementById(`label-${currentId}`).innerText = 'Pause';
+                if (currentId && document.getElementById(`label-${currentId}`)) document.getElementById(`label-${currentId}`).innerText = 'Pause';
             } else { 
                 player.pause(); 
                 document.getElementById('bar-play-toggle').innerText = '▶ Play'; 
-                if (currentId) document.getElementById(`label-${currentId}`).innerText = 'Play';
+                if (currentId && document.getElementById(`label-${currentId}`)) document.getElementById(`label-${currentId}`).innerText = 'Play';
             }
         };
         
         document.getElementById('bar-close').onclick = () => { 
             player.pause(); 
             document.getElementById('player-bar').classList.add('translate-y-full'); 
-            if (currentId) document.getElementById(`label-${currentId}`).innerText = 'Play';
+            if (currentId && document.getElementById(`label-${currentId}`)) document.getElementById(`label-${currentId}`).innerText = 'Play';
             currentId = null;
         };
 
         function openLyrics(key) {
-            const data = songDetails[key];
-            if (!data) return;
+            const data = songDetails[key] || {
+                summary: "Famous John Denver acoustic recording.",
+                quote: "Acoustic melodies filled with warmth and natural beauty.",
+                searchQuery: `John Denver ${key} lyrics`
+            };
 
             document.getElementById('lyrics-title').innerText = key.replace('-', ' ').toUpperCase();
             document.getElementById('lyrics-body').innerHTML = `
+                ${data.albumCover ? `
                 <div class="flex gap-3 items-center pb-2 border-b border-brown/20">
-                    <img src="${data.albumCover}" alt="Album Cover" class="w-14 h-14 rounded border border-gold shadow object-cover shrink-0" onerror="this.style.display='none'">
+                    <img src="${data.albumCover}" alt="Album Cover" class="w-14 h-14 rounded border border-gold shadow object-cover shrink-0">
                     <div>
                         <h5 class="font-bold text-brown-dark dark:text-brown-light text-xs">Featured Song Excerpt</h5>
                         <p class="text-[10px] opacity-80 text-brown dark:text-amber-200">John Denver Discography</p>
                     </div>
-                </div>
+                </div>` : ''}
                 <div>
                     <h5 class="font-bold text-brown-dark dark:text-brown-light mb-1">📖 Meaning & Themes:</h5>
                     <p class="leading-relaxed text-[11px]">${data.summary}</p>
                 </div>
                 <div>
-                    <h5 class="font-bold text-brown-dark dark:text-brown-light mb-1">🎵 Lyric Excerpt (John Denver):</h5>
+                    <h5 class="font-bold text-brown-dark dark:text-brown-light mb-1">🎵 Lyric Excerpt:</h5>
                     <blockquote class="italic border-l-2 border-brown pl-2 text-[11px] whitespace-pre-line">${data.quote}</blockquote>
                 </div>
                 <div class="pt-2 border-t border-brown/20 text-[10px] text-brown dark:text-brown-light">
-                    💡 <i>You can find the full, licensed lyrics by searching for "<b>${data.searchQuery}</b>" on Google.</i>
+                    💡 <i>You can find the full lyrics by searching "<b>${data.searchQuery}</b>" online.</i>
                 </div>
             `;
             document.getElementById('lyrics-modal').classList.remove('hidden');
